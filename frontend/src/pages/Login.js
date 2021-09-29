@@ -1,11 +1,23 @@
 import React from 'react';
-import Navigation from '../components/Navigation';
+import Header from '../components/Header';
+
 
 const Login = () => {
     return (
-        <div>
-             <Navigation />
-            <h1>Login</h1>
+        <div className="login">
+            <Header />
+            <form>
+                <label htmlFor="email">E-mail :</label>
+                <input type="email" id="email" name="email"/>
+                
+                <label htmlFor="userName">Username :</label>
+                <input type="text" id="userName" name="userName"/>
+                
+                <label htmlFor="password">Password :</label>
+                <input type="text" id="password" name="password"/>
+                
+                <button>Login</button>
+            </form>
         </div>
     );
 };

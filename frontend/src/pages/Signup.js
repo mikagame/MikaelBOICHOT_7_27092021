@@ -1,12 +1,14 @@
+
 import React from 'react';
-import Navigation from '../components/Navigation';
+import Header from '../components/Header';
+
+
 
 
 const Signup = () => {
     return (
         <div className="signup">
-             <Navigation />
-            <h1>Signup</h1>
+            <Header />
             <form>
                 <label htmlFor="email">E-mail :</label>
                 <input type="email" id="email" name="email"/>
