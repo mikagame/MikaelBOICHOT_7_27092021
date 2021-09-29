@@ -1,5 +1,5 @@
 const express = require('express');
-const mongoose = require('mongoose');
+const mysql = require('mysql');
 const cors = require('cors');
 const helmet = require('helmet');
 const dotenv = require('dotenv');
@@ -7,19 +7,24 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-const uri = process.env.URI;
+
 const path = require('path');
 
-const sauceRoutes = require('./routes/sauce');
+
 const userRoutes = require('./routes/user');
 
-// *** connexion à mongoDB *** // 
+// *** connexion à mysql *** // 
 
-mongoose.connect(uri,
-  { useNewUrlParser: true,
-    useUnifiedTopology: true })
-  .then(() => console.log('Connexion à MongoDB réussie !'))
-  .catch(() => console.log('Connexion à MongoDB échouée !'));
+const connection = mysql.createConnection ({
+  host: "localhost",
+  user: "root",
+  password: "Mikael12",
+  database: "db_groupomania"
+});
+connection.connect ((err) => {
+  if (err) throw err;
+  console.log ('Connecté!');
+});
 
 const app = express();
 
@@ -39,7 +44,7 @@ app.use(cors());
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use('/api/auth', userRoutes);
-app.use('/api/sauces', sauceRoutes);
+
 
 app.use(helmet());
 
