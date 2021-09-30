@@ -1,4 +1,6 @@
 import React from 'react';
+
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 
 
@@ -7,8 +9,13 @@ import Header from '../components/Header';
 const Accueil = () => {
     return (
         <div className="home">
+            
             <Header />
-            <h1>Accueil</h1>
+            <section id="wall">
+                blablabla
+            </section>
+            <Footer />
+            
         </div>
     );
 };

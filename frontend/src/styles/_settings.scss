@@ -1,9 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+}
 body {
-    
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 50px;
+
 }
 header {
     display: flex;
     justify-content: space-between;
+    background: center no-repeat url('../assets/logo1.png');
+    background-size: contain;
+    margin: 30px 0 30px 0;
+    padding-bottom: 200px;
 
     a {
         margin: 10px;
@@ -17,7 +32,7 @@ header {
         &::after {
           content: "";
           width: 85%;
-          height: 5px;
+          height: 3px;
           background: blue;
           position: absolute;
           bottom: 1px;
@@ -25,4 +40,14 @@ header {
           transform: translateX(-50%);
         }
       }
+}
+
+footer {
+  background-color: grey;
+  padding: 100px;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }

@@ -1,10 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { Clock } from './Clock';
 
 const Navigation = () => {
     return (
         <div className="navigation">
-            
+            <Clock />
+            <div>
             <NavLink exact to="/" activeClassName="nav-active">
                 Accueil
             </NavLink>
@@ -14,6 +16,8 @@ const Navigation = () => {
             <NavLink exact to="/login" activeClassName="nav-active">
                 Login
             </NavLink>
+            </div>
+           
             
         </div>
     );

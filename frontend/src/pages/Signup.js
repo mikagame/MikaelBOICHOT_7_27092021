@@ -1,13 +1,15 @@
 
+
 import React from 'react';
+
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 
-
-
-
 const Signup = () => {
+
     return (
         <div className="signup">
+      
             <Header />
             <form>
                 <label htmlFor="email">E-mail :</label>
@@ -19,10 +21,14 @@ const Signup = () => {
                 <label htmlFor="password">Password :</label>
                 <input type="text" id="password" name="password"/>
                 
-                <button>Signup</button>
+                <button >Signup</button>
             </form>
+            <Footer />
         </div>
     );
+
+   
 };
 
 export default Signup;
+
