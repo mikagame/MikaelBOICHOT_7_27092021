@@ -3,19 +3,16 @@ const mysql = require('mysql');
 const cors = require('cors');
 const helmet = require('helmet');
 const dotenv = require('dotenv');
-
+const { Sequelize } = require('sequelize');
 
 dotenv.config();
-
 
 const path = require('path');
 
 
-const userRoutes = require('./routes/user');
-
 // *** connexion à mysql *** // 
 
-const connection = mysql.createConnection ({
+/*const connection = mysql.createConnection ({
   host: "localhost",
   user: "root",
   password: "Mikael12",
@@ -24,10 +21,25 @@ const connection = mysql.createConnection ({
 connection.connect ((err) => {
   if (err) throw err;
   console.log ('Connecté!');
+});*/
+
+const sequelize = new Sequelize('db_groupomania', 'root', 'Mikael12', {
+  host: 'localhost',
+  dialect: 'mysql'
 });
+try {
+   sequelize.authenticate();
+  console.log('Connection has been established successfully.');
+} catch (error) {
+  console.error('Unable to connect to the database:', error);
+}
 
 const app = express();
 
+const db = require('./models')
+
+//db.sequelize.sync({force: true});
+ db.sequelize.sync();
 // *** cors *** //
 
 app.use((req, res, next) => {
@@ -43,8 +55,9 @@ app.use(cors());
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
-app.use('/api/auth', userRoutes);
 
+const userRoutes = require('./routes/user');
+app.use('/api/auth', userRoutes);
 
 app.use(helmet());
 
