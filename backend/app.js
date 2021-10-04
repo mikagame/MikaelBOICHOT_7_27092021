@@ -10,19 +10,6 @@ dotenv.config();
 const path = require('path');
 
 
-// *** connexion à mysql *** // 
-
-/*const connection = mysql.createConnection ({
-  host: "localhost",
-  user: "root",
-  password: "Mikael12",
-  database: "db_groupomania"
-});
-connection.connect ((err) => {
-  if (err) throw err;
-  console.log ('Connecté!');
-});*/
-
 const sequelize = new Sequelize('db_groupomania', 'root', 'Mikael12', {
   host: 'localhost',
   dialect: 'mysql'
@@ -58,9 +45,9 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 
 
 const userRoutes = require('./routes/user');
-//const wallRoutes = require('./routes/wall');
+const wallRoutes = require('./routes/wall');
 app.use('/api/auth', userRoutes);
-//app.use('/api/wall', wallRoutes);
+app.use('/api/wall', wallRoutes);
 
 app.use(helmet());
 

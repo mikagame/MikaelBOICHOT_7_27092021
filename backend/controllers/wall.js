@@ -1,7 +1,9 @@
 const db = require('../models/');
 
 exports.getAll = (req, res, next) => {
-
+db.Wall.findAll()
+.then(res.status(201).json(req.body))
+.catch(err => (res.status(500).json({message: err.message})))
 }
 
 exports.createComment = (req, res, next) => {

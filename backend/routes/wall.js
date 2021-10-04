@@ -4,7 +4,7 @@ const userCtrl = require('../controllers/wall');
 const auth = require('../middleware/auth');
 
 router.post('/', auth, userCtrl.createComment);
-//router.get('/', userCtrl.getAll);
+router.get('/', auth, userCtrl.getAll);
 
 
 module.exports = router;

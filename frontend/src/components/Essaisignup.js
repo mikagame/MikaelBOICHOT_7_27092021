@@ -3,6 +3,7 @@ import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
+
 const Essaisignup= () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = donnees =>  axios({
@@ -11,12 +12,10 @@ const Essaisignup= () => {
       data: donnees
 
   })
-  .then(res => {console.log(res)
-    
-  })
+  .then()
   .catch(err => (err)) 
-  console.log(errors);
-  
+  //console.log(errors);
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <input type="email" placeholder="E-mail" {...register("email", {required: true, maxLength: 80})} />
