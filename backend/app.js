@@ -46,8 +46,10 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 
 const userRoutes = require('./routes/user');
 const wallRoutes = require('./routes/wall');
+
 app.use('/api/auth', userRoutes);
 app.use('/api/wall', wallRoutes);
+
 
 app.use(helmet());
 

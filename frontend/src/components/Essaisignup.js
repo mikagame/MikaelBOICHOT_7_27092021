@@ -2,9 +2,12 @@
 import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router';
 
 
 const Essaisignup= () => {
+
+  let history = useHistory();
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = donnees =>  axios({
       method: 'post',
@@ -12,7 +15,7 @@ const Essaisignup= () => {
       data: donnees
 
   })
-  .then()
+  .then(history.push('/perso'))
   .catch(err => (err)) 
   //console.log(errors);
 
