@@ -8,22 +8,26 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Comment from '../components/Comment';
 import Logo from '../components/Logo';
+import Logout from '../components/Logout';
 
 
 
 const Wall = () => {
 
    
-    const[cookies, setCookie] = useCookies(['token', 'isLog']);
+    const[cookies, setCookie] = useCookies(['token', 'isLog', 'id']);
 
     console.log('le token est : ' + cookies.token)
     //console.log(cookies.token)
     console.log('le isLogged est : ' + cookies.isLog)
+    console.log('le isLogged est : ' + cookies.isLog)
+    console.log('le id est : ' + cookies.id)
 
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + cookies.token;
     
     const [items, setItems] = useState();
     const [coms, setComs] = useState();
+    const [name, setName] = useState();
     
     useEffect(() => {
         axios.get('http://localhost:3000/api/wall')
@@ -36,23 +40,28 @@ const Wall = () => {
             setComs(res.data)
         })
 
-        /*axios.get(`http://localhost:3000/api/auth/${}`)
+        axios.get(`http://localhost:3000/api/auth/${cookies.id}`)
         .then(res => {
-            console.log(res)
-        })*/
+            console.log(res.data)
+            setName(res.data.username)
+        })
 
     }, [])
-
-   
-
-
 
 
     return (
         <>
-            <Logo />
-            <PostWall />
-          
+            <div className="logoutWall">
+                <Logo />
+                <Logout />
+            </div>
+
+            <div className="createPost">
+                <div className="welcome">Hello {name}</div>
+                <PostWall />
+            </div>
+                
+
             <div id="bodyWall">
                 
             {items && items.map(item => (

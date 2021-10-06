@@ -7,7 +7,7 @@ const Essailogin = () => {
 
       let history = useHistory();
 
-      const [cookies, setCookie] = useCookies(['token','isLog'])
+      const [cookies, setCookie] = useCookies(['token','isLog', 'id'])
 
       const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -21,14 +21,15 @@ const Essailogin = () => {
         const TOKEN = res.data.token;
         console.log(res.data)
         const ISLOG = res.data.isLogged;
-        //const ISLOGGED = res.data.isLogged;
+        const ID = res.data.id
         setCookie("token", TOKEN, { path: '/wall', sameSite: 'strict'})
         setCookie("isLog", ISLOG, { path: '/wall', sameSite: 'strict'})
+        setCookie("id", ID, {path: '/wall', sameSite: 'strict'})
           console.log(res.data)
             history.push('/wall')
         }
    
-    )
+    ) 
       .catch(err => (err)) 
       //console.log(errors);
  

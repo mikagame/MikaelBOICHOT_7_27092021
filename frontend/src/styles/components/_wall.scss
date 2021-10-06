@@ -18,8 +18,32 @@
 
 }
 
-.com {
-    
+.createPost {
+    display: flex;
+    justify-content: center;
+}
+
+.welcome {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.logoutWall {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    a {
+        text-decoration: none;
+        color: white;
+        font-size: 20px;
+        border: 1px solid black;
+        border-radius: 15px;
+        padding: 10px;
+        background-color: rgb(231, 56, 56);
+        &:hover {
+            background-color: rgb(155, 7, 7);
+    }
+    }
 }
 
 #bodyWall {
