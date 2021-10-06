@@ -15,9 +15,9 @@ const Essaisignup= () => {
       data: donnees
 
   })
-  .then(history.push('/perso'))
+  .then()//history.push('/wall'))
   .catch(err => (err)) 
-  //console.log(errors);
+  console.log(errors);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

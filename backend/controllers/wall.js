@@ -11,15 +11,17 @@ exports.getOne = (req, res, next) => {
     .then(wall => res.status(201).json(wall))
 }
 
-exports.createComment = (req, res, next) => {
-    const comment = ({
+exports.createPost = (req, res, next) => {
+    const post = ({
         
-        comment: req.body.comment
+        post: req.body.post
     })
-    db.Wall.create(comment)
-    .then(res.status(201).json(comment))
+    db.Wall.create(post)
+    .then(res.status(201).json(post))
     .catch(err => (res.status(500).json({message: err.message})))
     }
+
+  
     
 
 

@@ -3,8 +3,9 @@ import { BrowserRouter, Switch, Route} from "react-router-dom";
 import Accueil from './pages/Accueil';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
-import Perso from './pages/Perso';
+
 import Signup from './pages/Signup';
+import Wall from './pages/Wall';
 
 const App = () => {
   return (
@@ -13,7 +14,7 @@ const App = () => {
         <Route path="/" exact component={Accueil}/>
         <Route path="/signup" exact component={Signup} />
         <Route path="/login" exact component={Login} />
-        <Route path="/perso" exact component={Perso} />
+        <Route path="/wall" exact component={Wall} />
         <Route component={NotFound} />
       </Switch>
     </BrowserRouter>
