@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const userCtrl = require('../controllers/wall');
+const wallCtrl = require('../controllers/wall');
 const auth = require('../middleware/auth');
+const multer = require('../middleware/multer-config');
 
-router.post('/', userCtrl.createPost);
-
-router.get('/', auth, userCtrl.getAll);
-router.get('/:id', userCtrl.getOne);
+router.post('/',  wallCtrl.createPost);
+router.get('/', auth, wallCtrl.getAll);
+router.get('/:id', wallCtrl.getOne);
 
 
 module.exports = router;

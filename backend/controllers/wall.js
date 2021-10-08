@@ -1,5 +1,6 @@
 const db = require('../models/');
 
+
 exports.getAll = (req, res, next) => {
 db.Wall.findAll()
 .then(wall => res.status(201).json( wall))
@@ -12,14 +13,16 @@ exports.getOne = (req, res, next) => {
 }
 
 exports.createPost = (req, res, next) => {
-    const post = ({
-        
+    const POST = ({
+        userId: req.body.userId,
         post: req.body.post
     })
-    db.Wall.create(post)
-    .then(res.status(201).json(post))
+    db.Wall.create(POST)
+    .then(res.status(201).json(POST))
     .catch(err => (res.status(500).json({message: err.message})))
     }
+
+    
 
   
     

@@ -19,14 +19,13 @@ const Essailogin = () => {
       
       .then( res => {
         const TOKEN = res.data.token;
-        console.log(res.data)
         const ISLOG = res.data.isLogged;
         const ID = res.data.id
         setCookie("token", TOKEN, { path: '/wall', sameSite: 'strict'})
         setCookie("isLog", ISLOG, { path: '/wall', sameSite: 'strict'})
         setCookie("id", ID, {path: '/wall', sameSite: 'strict'})
-          console.log(res.data)
-            history.push('/wall')
+        
+        history.push('/wall')
         }
    
     ) 

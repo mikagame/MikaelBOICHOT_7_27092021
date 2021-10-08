@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React from 'react';
 import { useCookies } from 'react-cookie';
-
 import PostWall from '../components/PostWall';
 import { useState, useEffect } from 'react';
 import Header from '../components/Header';
@@ -10,29 +9,21 @@ import Comment from '../components/Comment';
 import Logo from '../components/Logo';
 import Logout from '../components/Logout';
 
-
-
 const Wall = () => {
-
-   
-    const[cookies, setCookie] = useCookies(['token', 'isLog', 'id']);
-
-    console.log('le token est : ' + cookies.token)
-    //console.log(cookies.token)
-    console.log('le isLogged est : ' + cookies.isLog)
-    console.log('le isLogged est : ' + cookies.isLog)
-    console.log('le id est : ' + cookies.id)
-
-    axios.defaults.headers.common['Authorization'] = 'Bearer ' + cookies.token;
     
+  
+    const[cookies, setCookie] = useCookies(['token', 'isLog', 'id']);
     const [items, setItems] = useState();
     const [coms, setComs] = useState();
     const [name, setName] = useState();
+
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + cookies.token;  
     
     useEffect(() => {
         axios.get('http://localhost:3000/api/wall')
         .then(res => {
             setItems(res.data)
+            
         })
 
         axios.get('http://localhost:3000/api/comment')

@@ -14,8 +14,6 @@ const Comment = () => {
     
     .then( res => {
       console.log(res.data)
-      
-       
       }
  
   )
@@ -23,11 +21,9 @@ const Comment = () => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-      
-      
-        <input type="text" placeholder="Dire quelquechose" {...register("comment", {required: true, min: 1000})} />
-        <input type="submit"  />
-      </form>
+          <input type="text" placeholder="Dire quelquechose" {...register("comment", {required: true, min: 1000})} />
+          <input type="submit"  />
+        </form>
     );
 };
 

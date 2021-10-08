@@ -51,3 +51,19 @@ footer {
   left: 0;
   right: 0;
 }
+
+
+// DEV style
+
+#formTypeDev {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  input {
+    margin: 10px;
+  }
+  p {
+    margin-right: 20px;
+  }
+}
+
