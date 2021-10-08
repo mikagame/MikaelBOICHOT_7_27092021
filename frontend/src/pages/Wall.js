@@ -33,7 +33,7 @@ const Wall = () => {
 
         axios.get(`http://localhost:3000/api/auth/${cookies.id}`)
         .then(res => {
-            console.log(res.data)
+            //console.log(res.data)
             setName(res.data.username)
         })
 
@@ -57,7 +57,12 @@ const Wall = () => {
                 
             {items && items.map(item => (
                 <div key={item.id} className="post">
+
+                    
                     {item.post}
+                    <img src={item.imgUrl} />
+                    
+
                     <div className="com">
                     {coms && coms.map(com => (
                         <div key={com.id } >

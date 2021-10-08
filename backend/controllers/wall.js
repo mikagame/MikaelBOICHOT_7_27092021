@@ -13,11 +13,14 @@ exports.getOne = (req, res, next) => {
 }
 
 exports.createPost = (req, res, next) => {
+    console.log(req.body)
+
     const POST = ({
         userId: req.body.id,
         post: req.body.post,
-        imgUrl: req.body.imgUrl
+        imgUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`      //${req.body.imgUrl} ${req.file.filename}
     })
+    
     db.Wall.create(POST)
     .then(res.status(201).json(POST))
     .catch(err => (res.status(500).json({message: err.message})))

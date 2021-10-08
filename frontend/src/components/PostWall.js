@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useCookies} from "react-cookie";
 
@@ -8,14 +8,21 @@ const PostWall = () => {
     const [cookies, setCookie] = useCookies(['token','isLog', 'id'])
     const { register, handleSubmit, formState: { errors } } = useForm();
  
-    const onSubmit = donnees  =>  
-    axios.post('http://localhost:3000/api/wall', {...donnees, "id": cookies.id})
-    
-    .then( res => {
-      console.log(res.data)   
-      }
-  )
-    .catch(err => (err)) 
+    const onSubmit = (donnees)  =>  {
+        
+       console.log(donnees.imgUrl[0])
+       
+        const formData = new FormData()
+        formData.append("post", donnees.post)
+        formData.append("id", cookies.id)
+        formData.append("image", donnees.imgUrl[0])
+        console.log(formData)
+
+        axios.post('http://localhost:3000/api/wall', formData )
+        .then( res => {console.log(res.data)})
+        .catch(err => (err)) 
+    }
+   
 
      return (
     <div className="postWall">
@@ -26,6 +33,10 @@ const PostWall = () => {
         </form>
     </div>   
     );
+
+   
+
+
 
 
 
