@@ -14,8 +14,9 @@ exports.getOne = (req, res, next) => {
 
 exports.createPost = (req, res, next) => {
     const POST = ({
-        userId: req.body.userId,
-        post: req.body.post
+        userId: req.body.id,
+        post: req.body.post,
+        imgUrl: req.body.imgUrl
     })
     db.Wall.create(POST)
     .then(res.status(201).json(POST))

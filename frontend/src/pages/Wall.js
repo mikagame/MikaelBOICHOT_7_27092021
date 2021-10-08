@@ -23,7 +23,7 @@ const Wall = () => {
         axios.get('http://localhost:3000/api/wall')
         .then(res => {
             setItems(res.data)
-            
+            console.log(res.data) 
         })
 
         axios.get('http://localhost:3000/api/comment')

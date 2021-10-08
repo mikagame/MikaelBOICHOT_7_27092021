@@ -7,23 +7,15 @@ const PostWall = () => {
 
     const [cookies, setCookie] = useCookies(['token','isLog', 'id'])
     const { register, handleSubmit, formState: { errors } } = useForm();
-
+ 
     const onSubmit = donnees  =>  
-    axios.post('http://localhost:3000/api/wall', {...donnees, userId: cookies.id})
+    axios.post('http://localhost:3000/api/wall', {...donnees, "id": cookies.id})
     
     .then( res => {
       console.log(res.data)   
       }
   )
     .catch(err => (err)) 
-
-
-      /*axios({
-        method: 'post',
-        url: 'http://localhost:3000/api/wall',
-        data: donnees,  
-    })*/
-    
 
      return (
     <div className="postWall">

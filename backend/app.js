@@ -26,7 +26,7 @@ const app = express();
 const db = require('./models')
 
 //db.sequelize.sync({force: true});
- db.sequelize.sync();
+db.sequelize.sync();
 
 // *** cors *** //
 
