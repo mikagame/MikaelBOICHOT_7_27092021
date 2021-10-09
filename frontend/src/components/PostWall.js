@@ -9,13 +9,11 @@ const PostWall = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
  
     const onSubmit = (donnees)  =>  {
-        
-       console.log(donnees.imgUrl[0])
        
         const formData = new FormData()
-        formData.append("post", donnees.post)
-        formData.append("id", cookies.id)
-        formData.append("image", donnees.imgUrl[0])
+        formData.append("post", donnees.post)        // post de l'utilisateur
+        formData.append("id", cookies.id)            // userId
+        formData.append("image", donnees.imgUrl[0])  //image pour multer
         console.log(formData)
 
         axios.post('http://localhost:3000/api/wall', formData )

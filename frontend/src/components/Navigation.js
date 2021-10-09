@@ -5,7 +5,8 @@ import { Clock } from './Clock';
 const Navigation = () => {
     return (
         <div className="navigation">
-            <Clock />
+       
+            <img src="./img/logoGroup.png" />
             <div>
             <NavLink exact to="/" activeClassName="nav-active">
                 Accueil

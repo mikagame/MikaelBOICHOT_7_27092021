@@ -7,10 +7,10 @@ const Accueil = () => {
         <div className="home">
             
             <Header />
-            <section id="wall">
-                
-            </section>
-            <Footer />
+            <div id="wall">
+            <img src="./img/bgHome.png" alt="logo" />
+            </div>
+            
             
         </div>
     );

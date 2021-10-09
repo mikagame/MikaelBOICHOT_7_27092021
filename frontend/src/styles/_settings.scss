@@ -5,20 +5,16 @@
 
 html {
   height: 100%;
+  background-color: rgb(206, 200, 200);
 }
-body {
-  min-height: 100%;
-  position: relative;
-  padding-bottom: 250px;
 
-}
+
 header {
     display: flex;
     justify-content: space-between;
-    background: center no-repeat url('../assets/logo1.png');
-    background-size: contain;
-    margin: 30px 0 30px 0;
-    padding-bottom: 200px;
+    background-color: white;
+    margin: 0 0 100px 0;
+    
 
     a {
         margin: 10px;

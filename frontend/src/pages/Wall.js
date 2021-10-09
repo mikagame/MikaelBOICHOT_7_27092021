@@ -49,7 +49,7 @@ const Wall = () => {
 
             <div className="createPost">
                 <div className="welcome">Hello {name}</div>
-                <PostWall />
+                
             </div>
                 
 
@@ -78,7 +78,7 @@ const Wall = () => {
             ))}
             
             </div>
-            <Footer />
+            <PostWall />
            
          
            

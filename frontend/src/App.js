@@ -3,7 +3,6 @@ import { BrowserRouter, Switch, Route} from "react-router-dom";
 import Accueil from './pages/Accueil';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
-
 import Signup from './pages/Signup';
 import Wall from './pages/Wall';
 
