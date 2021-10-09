@@ -9,7 +9,7 @@ const Logout = () => {
     return (
         <div className="logout">
             <NavLink exact to="/" activeClassName="nav-active">
-                Logout
+                Me déconnecter
             </NavLink>
         </div>
     );

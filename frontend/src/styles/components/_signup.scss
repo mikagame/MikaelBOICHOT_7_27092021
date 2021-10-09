@@ -1,19 +1,25 @@
-.signup {
+.signup, .login {
    
+    input {
+        margin-bottom: 10px;
+        border-radius: 10px;
+        padding: 5px;
+    }
+    
     form {
         display: flex;
         flex-direction: column;
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-    
+        border: 1px solid rgb(255, 255, 255);
+        padding: 20px;
+        border-radius: 15px;
+        
     }
 
-    input {
-        margin-bottom: 10px;
-    }
+   
 
-    button {
-        width: 100px;
-    }
+   
 }
+

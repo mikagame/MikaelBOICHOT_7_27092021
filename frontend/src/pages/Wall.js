@@ -8,6 +8,7 @@ import Footer from '../components/Footer';
 import Comment from '../components/Comment';
 import Logo from '../components/Logo';
 import Logout from '../components/Logout';
+import HeaderWall from '../components/HeaderWall';
 
 const Wall = () => {
     
@@ -42,10 +43,7 @@ const Wall = () => {
 
     return (
         <>
-            <div className="logoutWall">
-                <Logo />
-                <Logout />
-            </div>
+            <HeaderWall />
 
             <div className="createPost">
                 <div className="welcome">Hello {name}</div>

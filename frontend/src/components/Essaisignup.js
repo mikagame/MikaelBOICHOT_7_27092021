@@ -23,7 +23,7 @@ const Essaisignup= () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <input type="email" placeholder="E-mail" {...register("email", {required: true, maxLength: 80})} />
       <input type="text" placeholder="Username" {...register("username", {required: true, min: 3, maxLength: 100})} />
-      <input type="text" placeholder="Password" {...register("password", {required: true, min: 3})} />
+      <input type="password" placeholder="Password" {...register("password", {required: true, min: 3})} />
 
       <input type="submit" />
     </form>
