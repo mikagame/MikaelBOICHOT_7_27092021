@@ -9,4 +9,5 @@ router.get('/',  userCtrl.getAll);
 
 
 
+
 module.exports = router;

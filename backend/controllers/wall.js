@@ -13,7 +13,8 @@ exports.getOne = (req, res, next) => {
 }
 
 exports.createPost = (req, res, next) => {
-    console.log(req.body)
+    //console.log(req.body)
+
 
     const POST = ({
         userId: req.body.id,
