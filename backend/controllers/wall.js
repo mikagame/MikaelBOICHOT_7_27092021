@@ -24,6 +24,8 @@ exports.createPost = (req, res, next) => {
     }
 
     exports.deletePost = (req, res, next) => {
+
+        console.log(req.body)
         db.Wall.findOne({ where: {id: req.params.id }})    
         .then(post => {
             

@@ -25,12 +25,12 @@ const Wall = () => {
             console.log(res.data) 
             
         })
-        axios.get(`http://localhost:3000/api/wall/${idWall}`)
-        .then(res => {
-            setItems(res.data)
-            console.log(res.data) 
+        /*axios.post(`http://localhost:3000/api/wall/${idWall}`, )
+        .then(
             
-        })
+           res => console.log(res.data) 
+            
+        )*/
         axios.get('http://localhost:3000/api/comment')
         .then(res => {
             setComs(res.data)
@@ -61,7 +61,7 @@ const Wall = () => {
                                     <img src={item.imgUrl} />
                                 </div> 
                                 <i className="far fa-comment"></i>
-                                Voir les commentaires ({nbrCom}) 
+                                Commentaire(s) ({nbrCom}) 
 
                                 <button >supprimer le post</button>
                         </div>
