@@ -6,8 +6,10 @@ const HeaderWall = () => {
     return (
         <header id="headerWall">
             <img src="./img/logoGroup.png" />
+        <div className="ddd">
             <Logout />
             <DeleteProfil />
+        </div>
         </header>
     );
 };

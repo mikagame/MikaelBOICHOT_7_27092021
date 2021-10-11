@@ -5,20 +5,46 @@ const db = require('../models/');
 
 
 exports.signup = (req, res, next) => {
+    db.User.findAll()
+    .then((res) => {
+        
+        if(res.length == 0) {
+            
+            bcrypt.hash(req.body.password, 10)
+            .then(hash => {
+                const user = ({
+                    email: req.body.email,
+                    username: req.body.username,
+                    password: hash,
+                    isAdmin: true
+                })
+                db.User.create(user)
+            .then((res) => res.status(201).json(user))
+            .catch(err => (res.status(500).json({message: err.message})))
+            })
+            .catch(err => (res.status(500).json({message: err.message})))
 
-    
-    bcrypt.hash(req.body.password, 10)
-    .then(hash => {
-        const user = ({
-            email: req.body.email,
-            username: req.body.username,
-            password: hash
-        })
-        db.User.create(user)
-    .then(res.status(201).json(user))
-    .catch(err => (res.status(500).json({message: err.message})))
+
+        }
+        else {
+           
+            bcrypt.hash(req.body.password, 10)
+            .then(hash => {
+                const user = ({
+                    email: req.body.email,
+                    username: req.body.username,
+                    password: hash,
+                    isAdmin: false
+                })
+                db.User.create(user)
+            .then(res.status(201).json(user))
+            .catch(err => (res.status(500).json({message: err.message})))
+            })
+            .catch(err => (res.status(500).json({message: err.message})))
+
+        }
     })
-    .catch(err => (res.status(500).json({message: err.message})))
+   
 };
 
 exports.login = (req, res, next) => {

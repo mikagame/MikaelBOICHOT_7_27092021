@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 import Signup from './pages/Signup';
 import Wall from './pages/Wall';
+import WallComponent from './pages/WallComponent';
 
 
 const App = () => {
@@ -18,7 +19,7 @@ const App = () => {
         <Route path="/signup" exact component={Signup} />
         <Route path="/login" exact component={Login} />
         <Route path="/wall" exact component={Wall} />
-       
+        <Route path="/wall/:id" exact component={WallComponent} />
         <Route component={NotFound} />
       </Switch>
     </BrowserRouter>

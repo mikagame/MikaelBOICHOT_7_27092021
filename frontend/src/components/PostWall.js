@@ -17,7 +17,7 @@ const PostWall = () => {
         console.log(formData)
 
         axios.post('http://localhost:3000/api/wall', formData )
-        .then( res => {console.log(res.data)})
+        .then(() =>  window.location.reload())
         .catch(err => (err)) 
     }
    

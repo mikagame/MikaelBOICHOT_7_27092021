@@ -79,22 +79,7 @@
     font-size: 20px;
 }
 
-.logoutWall {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    a {
-        text-decoration: none;
-        color: white;
-        font-size: 20px;
-        border: 1px solid black;
-        border-radius: 15px;
-        padding: 10px;
-        background-color: rgb(231, 56, 56);
-        &:hover {
-            background-color: rgb(155, 7, 7);
-    }
-    }
+.logout {
 }
 
 #bodyWall {
@@ -122,6 +107,16 @@
 display: flex;
 align-items: center;
     padding: 20px;
+  
+
+    img {
+        width: 80%;
+        max-width: 400px;
+    }
+}
+
+.logout {
+    margin-bottom: 20px;
     a {
         text-decoration: none;
         color: white;
@@ -130,14 +125,16 @@ align-items: center;
         border-radius: 15px;
         padding: 10px;
         background-color: rgb(231, 56, 56);
+        width: 20%;
         &:hover {
             background-color: rgb(155, 7, 7);
     }
     }
+}
 
-    img {
-        width: 80%;
-        max-width: 400px;
-    }
+.ddd {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 

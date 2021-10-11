@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useCookies} from "react-cookie";
 
-const Comment = () => {
-
+const Comment = (props) => {
+console.log(props.id)
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [cookies, setCookie] = useCookies(['token','isLog', 'id'])
 
@@ -12,7 +12,7 @@ const Comment = () => {
 
     const onSubmit = donnees =>  {
    
-    const envoie = {...donnees, idUser: cookies.id , postId: postId}
+    const envoie = {...donnees, idUser: cookies.id, postId: props.id}
 
     axios.post('http://localhost:3000/api/comment', envoie)
     .then( res => {console.log(res.data)})
