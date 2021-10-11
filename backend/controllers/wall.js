@@ -40,9 +40,16 @@ exports.createPost = (req, res, next) => {
         .catch(error => res.status(400).json({ error }));   
     }
 
+ 
+        
 
-
-  
+  exports.assoc = (req, res, next) => {
+      db.Comment.findAll({where: {postId: req.params.id}})
+      .then(e => {
+          res.status(200).json(e);
+          console.log("ok ok ok ok ok ok ok")
+      })
+  }
     
 
 

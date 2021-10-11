@@ -33,6 +33,7 @@ const Wall = () => {
         .then(res => {
             setComs(res.data)
             console.log(res.data)
+            setNbrCom(res.data.length)
         })
         axios.get(`http://localhost:3000/api/auth/${cookies.id}`)
         .then(res => {

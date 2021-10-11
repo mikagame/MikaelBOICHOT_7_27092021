@@ -8,6 +8,6 @@ router.post('/', auth, multer, wallCtrl.createPost);
 router.get('/', auth, multer,  wallCtrl.getAll);
 router.get('/:id',auth, multer, wallCtrl.getOne);
 router.delete('/:id', auth, wallCtrl.deletePost);
-
+router.get('/assoc/:id',auth, multer, wallCtrl.assoc);
 
 module.exports = router;

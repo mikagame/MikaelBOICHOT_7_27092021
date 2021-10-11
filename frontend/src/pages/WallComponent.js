@@ -9,7 +9,7 @@ const WallComponent = () => {
 
     const[cookies, setCookie] = useCookies(['token', 'isLog', 'id']);
   const[info, setInfo] = useState()
-
+    const[assoCom, setAssoCom] = useState()
   const [coms, setComs] = useState();
 let urlParams = useParams();
 console.log(urlParams.id)
@@ -27,19 +27,21 @@ useEffect(() => {
           setComs(res.data)
             console.log(res.data)
         })
+        axios.get(`http://localhost:3000/api/wall/assoc/${urlParams.id}`)
+        .then(res => setAssoCom(res.data))
+     
 }, [])
-
-
+console.log(assoCom)
+console.log(info)
     return (
         <>
-            
-              
-                hello
-                <Comment id={urlParams.id}/>
-                {coms && coms.map(com=> (
-
-                <div key={com.id}>{com.comment}</div>
-                ))}
+            {assoCom && assoCom.map(item => (
+              <div key={item.id} id={item.id} >
+                  {item.comment}
+              </div>
+            ))}
+               <Comment />
+             
             
 
         </>
