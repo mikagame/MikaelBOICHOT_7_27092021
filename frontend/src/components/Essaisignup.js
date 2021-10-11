@@ -3,7 +3,7 @@ import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router';
-
+import { useCookies} from "react-cookie";
 
 const Essaisignup= () => {
 
@@ -15,7 +15,13 @@ const Essaisignup= () => {
       data: donnees
 
   })
-  .then()//history.push('/wall'))
+  .then( 
+    
+    
+    history.push('/login')
+    
+
+) 
   .catch(err => (err)) 
   console.log(errors);
 

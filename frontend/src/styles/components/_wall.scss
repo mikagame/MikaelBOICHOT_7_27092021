@@ -12,7 +12,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+    width: 70%;
+    max-width: 600px;
 
   
 
@@ -63,7 +64,9 @@
         
        
     }
-
+&:hover {
+    cursor: pointer;
+}
 }
 
 .createPost {
@@ -99,12 +102,6 @@
     flex-direction: column;
     align-items: center;
    margin-bottom: 200px;
-
-   a {
-    width: 70%;
-    max-width: 600px;
-text-decoration: none;
-   }
 }
 
 .postWall {
