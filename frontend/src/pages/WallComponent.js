@@ -29,22 +29,31 @@ useEffect(() => {
         })
         axios.get(`http://localhost:3000/api/wall/assoc/${urlParams.id}`)
         .then(res => setAssoCom(res.data))
+       
      
 }, [])
-console.log(assoCom)
-console.log(info)
+
+
+
     return (
-        <>
+        <div className="one">
+        <div className="oneArticle">
+        {info && info.post}
+            <img src={info&& info.imgUrl}/>
+        </div>
+           
+            <div className="zoneComment">
             {assoCom && assoCom.map(item => (
               <div key={item.id} id={item.id} >
                   {item.comment}
               </div>
             ))}
-               <Comment />
+            </div>
+               <Comment id={urlParams.id} className="postComment" />
              
             
 
-        </>
+        </div>
     );
 };
 

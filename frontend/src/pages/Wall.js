@@ -17,8 +17,10 @@ const Wall = () => {
     const [name, setName] = useState();
     const[nbrCom, setNbrCom] = useState(0)
     const [idWall, setIdWall]=  useState(0)
-  let history = useHistory();
-
+    const[assoCom, setAssoCom] = useState()
+    const[count, setCount] = useState()
+    let history = useHistory();
+  
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + cookies.token;  
     
     useEffect(() => {
@@ -40,6 +42,8 @@ const Wall = () => {
             //console.log(res.data)
             setName(res.data.username)
         })
+       /*axios.get(`http://localhost:3000/api/wall/assoc/${items.id}`)
+        .then(res => setAssoCom(res.data))*/
         
     }, [])
 
@@ -50,8 +54,13 @@ const deletePost =(id) => {
 }
 const showPost = (id) => {
     history.push(`/wall/${id}`)
+   
 }
-    
+
+function stopEvent(ev) {
+    ev.stopPropagation();
+  }
+
     return (
         <> 
             <HeaderWall />
@@ -62,26 +71,26 @@ const showPost = (id) => {
 
                     {items && items.map(item => (
                         
-            <div key={item.id} id={item.id} className="post" onClick={() => showPost(item.id)}>
-                           
-                            {item.post}
-                          
-                        <LikeDislike />
+            <div key={item.id} id={item.id} className="post" onClick={() => {showPost(item.id);}}>        
+                {item.post}
+                <LikeDislike />
+                <div className="thing">
+                    <img src={item.imgUrl} />
+                </div> 
+                {coms && coms.map(com => {              
+                    if(com.postId == item.id) {
+                        return(<div></div>) 
+                    }      
+                                 }
+                                    
+                )}
+                <i className="far fa-comment"></i>
                             
-                                <div className="thing">
-                                    <img src={item.imgUrl} />
-                                </div> 
-                                {coms && coms.map(com=> (
+                Commentaire(s) ({nbrCom}) 
 
-                                    <div key={com.id}>{com.comment}</div>
-                                ))}
-                                <i className="far fa-comment"></i>
-                            
-                                Commentaire(s) ({nbrCom}) 
-
-                                <button onClick={() => deletePost(item.id)}>supprimer le post</button>
+                <button id="del" className="btnDelete" onClick={() => {{deletePost(item.id)};stopEvent()}}>supprimer le post</button>
                                 
-                        </div>
+            </div>
                        
                     ))
                     }  
