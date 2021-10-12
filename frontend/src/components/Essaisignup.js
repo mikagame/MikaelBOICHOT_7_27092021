@@ -9,19 +9,8 @@ const Essaisignup= () => {
 
   let history = useHistory();
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const onSubmit = donnees =>  axios({
-      method: 'post',
-      url: 'http://localhost:3000/api/auth/signup',
-      data: donnees
-
-  })
-  .then( 
-    
-    
-    history.push('/login')
-    
-
-) 
+  const onSubmit = donnees =>  axios.post('http://localhost:3000/api/auth/signup', donnees)
+  .then(history.push('/login')) 
   .catch(err => (err)) 
   console.log(errors);
 

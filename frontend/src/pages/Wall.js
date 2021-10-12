@@ -25,41 +25,24 @@ const Wall = () => {
     
     useEffect(() => {
         axios.get('http://localhost:3000/api/wall')
-        .then(res => {
-            setItems(res.data)
-            console.log(res.data) 
-          
-        })
+        .then(res => {setItems(res.data)})
         
         axios.get('http://localhost:3000/api/comment')
         .then(res => {
             setComs(res.data)
-            console.log(res.data)
             setNbrCom(res.data.length)
         })
         axios.get(`http://localhost:3000/api/auth/${cookies.id}`)
-        .then(res => {
-            //console.log(res.data)
-            setName(res.data.username)
-        })
-       /*axios.get(`http://localhost:3000/api/wall/assoc/${items.id}`)
-        .then(res => setAssoCom(res.data))*/
-        
+        .then(res => {setName(res.data.username)}) 
     }, [])
 
-const deletePost =(id) => {
-    axios.delete(`http://localhost:3000/api/wall/${id}`)
-    .then(res => {window.location.reload()})
+    const deletePost =(id) => {
+        axios.delete(`http://localhost:3000/api/wall/${id}`)
+        .then(res => window.location.reload())
+    }
+    const showPost = (id) => {history.push(`/wall/${id}`)}
    
-}
-const showPost = (id) => {
-    history.push(`/wall/${id}`)
-   
-}
-
-function stopEvent(ev) {
-    ev.stopPropagation();
-  }
+    function stopEvent(ev) {ev.stopPropagation()}
 
     return (
         <> 
@@ -71,7 +54,7 @@ function stopEvent(ev) {
 
                     {items && items.map(item => (
                         
-            <div key={item.id} id={item.id} className="post" onClick={() => {showPost(item.id);}}>        
+            <div key={item.id} className="post" onClick={() => {showPost(item.id)}}>        
                 {item.post}
                 <LikeDislike />
                 <div className="thing">
@@ -80,20 +63,13 @@ function stopEvent(ev) {
                 {coms && coms.map(com => {              
                     if(com.postId == item.id) {
                         return(<div></div>) 
-                    }      
-                                 }
-                                    
+                    }}                                     
                 )}
-                <i className="far fa-comment"></i>
-                            
+                <i className="far fa-comment"></i>              
                 Commentaire(s) ({nbrCom}) 
-
-                <button id="del" className="btnDelete" onClick={() => {{deletePost(item.id)};stopEvent()}}>supprimer le post</button>
-                                
-            </div>
-                       
-                    ))
-                    }  
+                <button id="del" className="btnDelete" onClick={(e) => {{deletePost(item.id)};stopEvent(e)}}>supprimer le post</button>                 
+            </div>      
+                    ))}  
             </div>
             <PostWall />  
         </>

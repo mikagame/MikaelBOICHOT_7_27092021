@@ -18,11 +18,3 @@ const db = require('../models/');
         .then(comment => res.status(201).json( comment))
         .catch(err => (res.status(500).json({message: err.message})))
         }
-
-
-/*exports.getComment = (req, res, next) => {
-
-  db.Wall.findOne(where: {id: req.})
-  .then()
-  .catch()
-}*/

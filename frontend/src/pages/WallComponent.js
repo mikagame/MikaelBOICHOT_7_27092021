@@ -29,11 +29,8 @@ useEffect(() => {
         })
         axios.get(`http://localhost:3000/api/wall/assoc/${urlParams.id}`)
         .then(res => setAssoCom(res.data))
-       
-     
+        
 }, [])
-
-
 
     return (
         <div className="one">
