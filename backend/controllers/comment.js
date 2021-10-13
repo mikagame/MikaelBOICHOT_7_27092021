@@ -5,7 +5,8 @@ const db = require('../models/');
     const comment = ({
         userId: req.body.idUser,
         postId: req.body.postId,
-        comment: req.body.comment
+        comment: req.body.comment,
+        username: req.body.username
     })
     db.Comment.create(comment)
     .then(res.status(201).json(comment))
@@ -18,3 +19,6 @@ const db = require('../models/');
         .then(comment => res.status(201).json( comment))
         .catch(err => (res.status(500).json({message: err.message})))
         }
+
+
+

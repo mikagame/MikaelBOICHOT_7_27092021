@@ -97,9 +97,28 @@
     left: 0;
     right: 0;
     bottom: 0;
-    height: 150px;
-   
-    
+    height: 150px; 
+    form {
+        display: flex;
+        align-items: center;
+        width: 80%;
+
+    }
+    input {
+padding: 20px;
+    }
+    button {
+        padding: 20px;
+    }
+}
+
+.postComment {
+    background: grey;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 150px; 
 }
 
 #headerWall {
@@ -146,6 +165,7 @@ align-items: center;
     img {
         object-fit: contain;
         width: 80%;
+        max-width: 600px;
         border-radius: 10px;
        
     }
@@ -155,12 +175,9 @@ align-items: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+    margin-bottom: 300px;
 }
 
-.zoneComment {
-    margin-top: 30px;
-}
 
 .postComment {
     display: flex;
@@ -174,9 +191,76 @@ align-items: center;
     height: 150px;
 }
 
-#del {
-    position: relative;
-    bottom: 50px;
-    left: 180px;
+
+
+#zoneComment {
+    width: 50%;
+    max-width: 540px;
+   padding: 30px;
+   background-color: white;
+   margin-top: 20px;
 }
+
+.com {
+    padding: 10px;
+}
+
+.wallCom {
+    display: flex;
+    align-items: center;
+    img {
+    width: 30%;
+    }
+    a {
+        border: 1px solid black;
+        border-radius: 10px;
+        &:hover {
+           background-color: rgba(164, 236, 221, 0.5);
+        }
+    }
+}
+
+.btnPost {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    button {
+        padding: 5px;
+        cursor: pointer;
+    }
+}
+
+textarea {
+    width: 90%;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 0 10px 0 0;
+}
+
+#sayForm {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    input {
+        padding: 20px;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: bold;
+        background-color: rgb(121, 197, 121);
+        
+    }
+}
+label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#formLogin , #formSignup{
+    width: 280px;
+}
+  
+
+
 

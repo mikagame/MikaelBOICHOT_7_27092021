@@ -22,6 +22,7 @@ const WallComponent = () => {
     .then(res => {
         console.log(res.data)
         setInfo(res.data)
+        
     }
         )
         axios.get('http://localhost:3000/api/comment')
@@ -30,7 +31,10 @@ const WallComponent = () => {
             console.log(res.data)
         })
         axios.get(`http://localhost:3000/api/wall/assoc/${urlParams.id}`)
-        .then(res => setAssoCom(res.data))
+        .then(res => {
+            setAssoCom(res.data)
+            console.log(res.data)
+        })
         axios.get(`http://localhost:3000/api/auth/${cookies.id}`)
         .then(res => {setName(res.data.username)}) 
         
@@ -38,24 +42,39 @@ const WallComponent = () => {
 
     return (
         <>
-        <header>
-
+        <header className="wallCom">
+          
+            <img src=".././img/logoGroup.png" alt="logo"/>
+        <h1>Hello {name}</h1>
+        <a href="/wall">Retour sur votre mur</a>
         </header>
         <div className="one">
-        Hello {name}
+
+       
+        
+        
+
         <div className="oneArticle">
         {info && info.post}
+        {(info && info.userId) == cookies.id?<button>supprimer mon post</button>:null}
+        
             <img src={info&& info.imgUrl}/>
         </div>
            
             <div id="zoneComment" className="zoneComment">
             {assoCom && assoCom.map(item => (
-              <div key={item.id} id={item.id} >
-                  {item.comment}
+              <div key={item.id} id={item.id} className="zoneComment">
+                  <p>{item.username} :  {item.comment} </p>
               </div>
             ))}
             </div>
-               <Comment id={urlParams.id} className="postComment" />
+
+                <div className="postComment">
+                <Comment id={urlParams.id} />
+                </div>
+              
+
+
         </div>
         </>
     );

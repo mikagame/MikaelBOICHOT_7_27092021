@@ -18,7 +18,10 @@ const Wall = () => {
     const[nbrCom, setNbrCom] = useState(0)
     const[ess, setEss] = useState()
     let history = useHistory();
-  
+    let res = []
+    let count = 0;
+   
+
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + cookies.token;  
     
     useEffect(() => {
@@ -29,7 +32,8 @@ const Wall = () => {
         axios.get('http://localhost:3000/api/comment')
         .then(res => {
             setComs(res.data)
-            setNbrCom(res.data.length)
+            
+            
         })
         // Récupération du Username
         axios.get(`http://localhost:3000/api/auth/${cookies.id}`)
@@ -50,7 +54,7 @@ const Wall = () => {
    
     function stopEvent(ev) {ev.stopPropagation()}
     console.log(items)
-    
+    console.log(coms)
 
     return (
         <> 
@@ -74,21 +78,25 @@ const Wall = () => {
                 </div> 
                 {coms && coms.map(com => {              
                     if(com.postId == item.id) {
-                        return(<div></div>) 
+                        
+                        return(<div ></div>) 
+                        
                     }}                                     
                 )}
                 <i className="far fa-comment"></i>              
                 Commentaire(s) ({nbrCom}) 
-                    
+                <div className="btnPost">
+                    {(item && item.userId) == cookies.id?<button  className="btnPut" >Modifier le post</button> :null}
+                    {(item && item.userId) == cookies.id?<button className="btnDel" onClick={(e) => {{deletePost(item.id)};stopEvent(e)}}>Supprimer le post</button> :null}
+                </div>
             </div>      
                     ))} 
+                      
+                        {/*<button id="del" className="btnDelete" onClick={(e) => {{deletePost(it.id)};stopEvent(e)}}>Supprimer le post</button> 
+                        <button id="del" className="btnModif" >Modifier le post</button> */}
+                         
 
-                {items && items.map(item => {if(name == item.username) {
-                    return(
-                        <button id="del" className="btnDelete" onClick={(e) => {{deletePost(item.id)};stopEvent(e)}}>supprimer le post</button> 
-                    )
-                }}
-                )}
+               
 
             </div>
             <PostWall />  

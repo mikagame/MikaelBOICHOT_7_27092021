@@ -15,10 +15,11 @@ const Essaisignup= () => {
   console.log(errors);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input type="email" placeholder="E-mail" {...register("email", {required: true, maxLength: 80})} />
-      <input type="text" placeholder="Username" {...register("username", {required: true, min: 3, maxLength: 100})} />
-      <input type="password" placeholder="Password" {...register("password", {required: true, min: 3})} />
+    <form id="formSignup" onSubmit={handleSubmit(onSubmit)}>
+
+      <label htmlFor="email">email: <input name="email" type="email" placeholder="E-mail" {...register("email", {required: true, maxLength: 80})} /></label>
+      <label htmlFor="username">username: <input type="text" placeholder="Username" {...register("username", {required: true, min: 3, maxLength: 100})} /></label>
+      <label htmlFor="password">password: <input type="password" placeholder="Password" {...register("password", {required: true, min: 3})} /></label>
 
       <input type="submit" />
     </form>

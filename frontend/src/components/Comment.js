@@ -7,12 +7,15 @@ const Comment = (props) => {
 console.log(props.id)
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [cookies, setCookie] = useCookies(['token','isLog', 'id'])
-
+    const [name, setName] = useState();
     const [postId, setPostId] = useState()
+
+    axios.get(`http://localhost:3000/api/auth/${cookies.id}`)
+    .then(res => {setName(res.data.username)}) 
 
     const onSubmit = donnees =>  {
    
-    const envoie = {...donnees, idUser: cookies.id, postId: props.id}
+    const envoie = {...donnees, idUser: cookies.id, postId: props.id, username: name}
 
     axios.post('http://localhost:3000/api/comment', envoie)
     .then( () => document.location.reload())
@@ -23,7 +26,7 @@ console.log(props.id)
     return (
 
         <form id="sayForm" onSubmit={handleSubmit(onSubmit)}>
-          <input id="textComment" type="text" placeholder="Dire quelquechose" {...register("comment", {required: true, min: 1000})} />
+          <textarea id="textComment" type="textarea" placeholder="Dire quelquechose" {...register("comment", {required: true, min: 1000})} />
           <input type="submit"  />
         </form>
     );

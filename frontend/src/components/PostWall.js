@@ -27,7 +27,7 @@ const PostWall = () => {
      return (
     <div className="postWall">
         <form onSubmit={handleSubmit(onSubmit)} >
-            <input type="text" placeholder="Poster quelquechose" {...register("post", {required: true, min: 1000})} />
+            <textarea type="text" placeholder="Poster quelquechose" {...register("post", {required: true, min: 1000})} />
             <input type="file" {...register("imgUrl")}/>
             <button  type="submit">Envoyer</button>
         </form>

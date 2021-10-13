@@ -22,9 +22,12 @@ const Essailogin = () => {
       .catch(err => (err)) 
      
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input type="email" placeholder="E-mail" {...register("email", {required: true, maxLength: 80})} />
-      <input type="password" placeholder="Password" {...register("password", {required: true, min: 3})} />
+    <form id="formLogin" onSubmit={handleSubmit(onSubmit)}>
+      <label htmlFor="email">email: <input name="email" type="email" placeholder="E-mail" {...register("email", {required: true, maxLength: 80})} /></label>
+     
+
+      <label htmlFor="password">password: <input name="password" type="password" placeholder="Password" {...register("password", {required: true, min: 3})} /></label>
+
       <input type="submit"  />
     </form>
   );
