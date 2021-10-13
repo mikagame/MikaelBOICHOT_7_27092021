@@ -93,3 +93,10 @@ exports.oneUser = (req, res, next) => {
 })
 .catch(err => (res.status(500).json({message: err.message})))
 }
+
+exports.allUsers = (req, res, next) => {
+
+    db.User.findAll()
+    .then(info => res.status(201).json(info))
+    .catch(err => (res.status(500).json({message: err.message})))
+}

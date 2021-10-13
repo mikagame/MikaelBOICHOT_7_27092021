@@ -17,10 +17,11 @@ exports.createPost = (req, res, next) => {
     const POST = ({
         userId: req.body.id,
         post: req.body.post,
+        username: req.body.username,
         imgUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`      //${req.body.imgUrl} ${req.file.filename}
     }) 
     db.Wall.create(POST)
-    .then(res => res.status(201).json(POST))
+    .then( result => res.status(201).json(result))
     .catch(err => (res.status(500).json({message: err.message})))
     }
 
@@ -40,9 +41,6 @@ exports.createPost = (req, res, next) => {
         })
         .catch(error => res.status(400).json({ error }));   
     }
-
- 
-        
 
   exports.assoc = (req, res, next) => {
       db.Comment.findAll({where: {postId: req.params.id}})

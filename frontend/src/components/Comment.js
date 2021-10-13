@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useCookies} from "react-cookie";
 
@@ -15,7 +15,7 @@ console.log(props.id)
     const envoie = {...donnees, idUser: cookies.id, postId: props.id}
 
     axios.post('http://localhost:3000/api/comment', envoie)
-    .then( res => {console.log(res.data)})
+    .then( () => document.location.reload())
     .catch(err => (err)) 
     
     
