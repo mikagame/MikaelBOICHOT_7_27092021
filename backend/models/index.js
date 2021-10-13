@@ -5,8 +5,16 @@ const path = require('path');
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
 const db = {};
+const dotenv = require('dotenv');
 
-  const sequelize = new Sequelize('db_groupomania', 'root', 'Mikael12', {
+dotenv.config();
+
+const DB = process.env.DB;
+const ID = process.env.ID;
+const PASS = process.env.PASS;
+
+
+  const sequelize = new Sequelize(DB, ID, PASS, {
     host: 'localhost',
     dialect: 'mysql'});
 

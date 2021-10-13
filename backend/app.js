@@ -10,7 +10,12 @@ dotenv.config();
 const path = require('path');
 
 
-const sequelize = new Sequelize('db_groupomania', 'root', 'Mikael12', {
+const DB = process.env.DB;
+const ID = process.env.ID;
+const PASS = process.env.PASS;
+
+
+const sequelize = new Sequelize(DB, ID, PASS, {
   host: 'localhost',
   dialect: 'mysql'
 });
