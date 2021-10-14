@@ -1,7 +1,10 @@
 #wall {
     display: flex;
     justify-content: center;
-  margin-bottom: 500px;
+ img {
+     margin-bottom: 80px;
+     border-radius: 10px;
+ }
     
 }
 

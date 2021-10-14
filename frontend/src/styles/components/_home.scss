@@ -7,23 +7,26 @@ img {
 .home {
     img{
         max-width: 600px;
+       
     }
 }
 
 .footerHome {
     position: absolute;
-  bottom: 0;
+  bottom: 0px;
   left: 0;
   right: 0;
 display: flex;
-max-height: 180px;
+
+max-height: 200px;
+
 padding-top: 5px;
+
 background-color: red;
 img {
     object-fit: cover;
     width: 100%;
     max-width: 100000px;
-   
 
 }
 

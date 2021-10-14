@@ -55,10 +55,6 @@ console.log(admin)
         </header>
         <div className="one">
 
-       
-        
-        
-
         <div className="oneArticle">
         {info && info.post}
         {((info && info.userId) == cookies.id || admin)?<button>supprimer mon post</button>:null}

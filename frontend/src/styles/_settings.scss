@@ -1,6 +1,6 @@
 * {
   margin: 0;
-  padding: 0;
+  padding:0;
 }
 
 html {
@@ -11,6 +11,12 @@ html {
 body {
   min-height: 100%;
 }
+
+#root {
+  padding-bottom: 10px;
+}
+
+
 
 
 header {

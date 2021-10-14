@@ -51,6 +51,12 @@ const Wall = () => {
         .then(res => window.location.reload())
     }
 
+    const updatePost = (id) => {
+        axios.put(`http://localhost:3000/api/wall/${id}`)
+        .then(res => window.location.reload())
+
+    }
+
     // Afficher un seul Post
     const showPost = (id) => {history.push(`/wall/${id}`)}
 
@@ -71,14 +77,13 @@ const Wall = () => {
                    
             <div key={item.id} className="post" onClick={() => {showPost(item.id)}}>      
 
-                {item.post}
-
                 <p>Auteur du post: {item.username}</p>
 
                 <LikeDislike />
                 <div className="thing">
                     <img src={item.imgUrl} />
                 </div> 
+                {item.post}
                 {coms && coms.map(com => {              
                     if(com.postId == item.id) {
                         
@@ -89,18 +94,12 @@ const Wall = () => {
                 <i className="far fa-comment"></i>              
                 Commentaire(s) ({nbrCom}) 
                 <div className="btnPost">
-                    {((item && item.userId) == cookies.id || admin)?<button  className="btnPut" >Modifier le post</button> :null}
-                    {((item && item.userId) == cookies.id || admin)?<button className="btnDel" onClick={(e) => {{deletePost(item.id)};stopEvent(e)}}>Supprimer le post</button> :null}
+                    {((item && item.userId) == cookies.id || admin)?<button  className="btnPut" onClick={(e) => {{deletePost(item.id)};stopEvent(e)}}>Modifier le post</button> :null}
+                    {((item && item.userId) == cookies.id || admin)?<button className="btnDel" onClick={(e) => {{updatePost(item.id)};stopEvent(e)}}>Supprimer le post</button> :null}
                 </div>
             </div>      
                     ))} 
                       
-                        {/*<button id="del" className="btnDelete" onClick={(e) => {{deletePost(it.id)};stopEvent(e)}}>Supprimer le post</button> 
-                        <button id="del" className="btnModif" >Modifier le post</button> */}
-                         
-
-               
-
             </div>
             <PostWall />  
         </>
