@@ -26,8 +26,6 @@ exports.createPost = (req, res, next) => {
     }
 
     exports.deletePost = (req, res, next) => {
-
-        console.log(req.body)
         db.Wall.findOne({ where: {id: req.params.id }})    
         .then(post => {
             
@@ -40,6 +38,14 @@ exports.createPost = (req, res, next) => {
             
         })
         .catch(error => res.status(400).json({ error }));   
+    }
+
+
+    exports.updatePost = (req, res, next) => {
+        db.Wall.update({where: {id: req.body.id}})
+        .then()
+        .catch()
+
     }
 
   exports.assoc = (req, res, next) => {
