@@ -40,11 +40,19 @@ exports.createPost = (req, res, next) => {
         .catch(error => res.status(400).json({ error }));   
     }
 
-
     exports.updatePost = (req, res, next) => {
-        db.Wall.update({where: {id: req.body.id}})
-        .then()
-        .catch()
+
+        console.log(req.body)
+        const postUp = req.file ? {
+            userId: req.body.id,
+            post: req.body.post,
+            username:req.body.username,
+            imgUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}` 
+        }: {...req.body}
+
+        db.Wall.update( postUp, {where: {id: req.body.postId}})
+        .then(post => res.status(200).json(postUp))
+        .catch(err => (res.status(500).json({message: err.message})))
 
     }
 
@@ -54,6 +62,7 @@ exports.createPost = (req, res, next) => {
           res.status(200).json(e);
           console.log("ok ok ok ok ok ok ok")
       })
+      .catch(err => (res.status(500).json({message: err.message})))
   }
     
 

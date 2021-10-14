@@ -7,6 +7,7 @@ import HeaderWall from '../components/HeaderWall';
 import LikeDislike from '../components/LikeDislike';
 import Comment from '../components/Comment';
 import { useHistory } from 'react-router';
+import PostWallUpdate from '../components/PostWallUpdate';
 
 
 const Wall = () => {
@@ -17,6 +18,8 @@ const Wall = () => {
     const [name, setName] = useState();
     const[nbrCom, setNbrCom] = useState(0)
     const[admin, setAdmin] = useState()
+    const[formUpdate, setFormUpdate] = useState(<PostWall />)
+
     let history = useHistory();
     let res = []
     let count = 0;
@@ -51,10 +54,13 @@ const Wall = () => {
         .then(res => window.location.reload())
     }
 
+    const showUpdate = (id) => {
+setFormUpdate(<PostWallUpdate id={id}/>)
+    }
+
     const updatePost = (id) => {
         axios.put(`http://localhost:3000/api/wall/${id}`)
         .then(res => window.location.reload())
-        .catch()
 
     }
 
@@ -95,14 +101,16 @@ const Wall = () => {
                 <i className="far fa-comment"></i>              
                 Commentaire(s) ({nbrCom}) 
                 <div className="btnPost">
-                    {((item && item.userId) == cookies.id || admin)?<button  className="btnPut" onClick={(e) => {{deletePost(item.id)};stopEvent(e)}}>Modifier le post</button> :null}
-                    {((item && item.userId) == cookies.id || admin)?<button className="btnDel" onClick={(e) => {{updatePost(item.id)};stopEvent(e)}}>Supprimer le post</button> :null}
+                    {((item && item.userId) == cookies.id || admin)?<button  className="btnPut" onClick={(e) => {{showUpdate(item.id)};stopEvent(e)}}>Modifier le post</button> :null}  {/*{updatePost(item.id)}*/}
+                    {((item && item.userId) == cookies.id || admin)?<button className="btnDel" onClick={(e) => {{deletePost(item.id)};stopEvent(e)}}>Supprimer le post</button> :null}
                 </div>
+                
             </div>      
                     ))} 
                       
             </div>
-            <PostWall />  
+            
+            {formUpdate}
         </>
     );
 };
