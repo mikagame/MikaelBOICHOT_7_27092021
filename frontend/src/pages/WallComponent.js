@@ -12,6 +12,8 @@ const WallComponent = () => {
     const[assoCom, setAssoCom] = useState()
     const [coms, setComs] = useState();
     const [name, setName] = useState();
+const [admin, setAdmin] = useState();
+
     let urlParams = useParams();
     console.log(urlParams.id)
 
@@ -36,10 +38,13 @@ const WallComponent = () => {
             console.log(res.data)
         })
         axios.get(`http://localhost:3000/api/auth/${cookies.id}`)
-        .then(res => {setName(res.data.username)}) 
+        .then(res => {
+            setName(res.data.username)
+            setAdmin(res.data.isAdmin)
+        }) 
         
 }, [])
-
+console.log(admin)
     return (
         <>
         <header className="wallCom">
@@ -56,7 +61,7 @@ const WallComponent = () => {
 
         <div className="oneArticle">
         {info && info.post}
-        {(info && info.userId) == cookies.id?<button>supprimer mon post</button>:null}
+        {((info && info.userId) == cookies.id || admin)?<button>supprimer mon post</button>:null}
         
             <img src={info&& info.imgUrl}/>
         </div>

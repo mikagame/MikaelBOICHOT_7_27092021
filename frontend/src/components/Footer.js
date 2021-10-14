@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => {
     return (
         <footer>
-            je suis le footer
+            <img src="./img/logoGroup.png" alt="logo-footer"/>
         </footer>
     );
 };

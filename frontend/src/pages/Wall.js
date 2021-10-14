@@ -16,7 +16,7 @@ const Wall = () => {
     const [coms, setComs] = useState();
     const [name, setName] = useState();
     const[nbrCom, setNbrCom] = useState(0)
-    const[ess, setEss] = useState()
+    const[admin, setAdmin] = useState()
     let history = useHistory();
     let res = []
     let count = 0;
@@ -37,7 +37,10 @@ const Wall = () => {
         })
         // Récupération du Username
         axios.get(`http://localhost:3000/api/auth/${cookies.id}`)
-        .then(res => {setName(res.data.username)}) 
+        .then(res => {
+            setName(res.data.username)
+            setAdmin(res.data.isAdmin)
+        }) 
 
     }, [])
 
@@ -53,8 +56,8 @@ const Wall = () => {
 
    
     function stopEvent(ev) {ev.stopPropagation()}
-    console.log(items)
-    console.log(coms)
+    console.log(cookies)
+   
 
     return (
         <> 
@@ -86,8 +89,8 @@ const Wall = () => {
                 <i className="far fa-comment"></i>              
                 Commentaire(s) ({nbrCom}) 
                 <div className="btnPost">
-                    {(item && item.userId) == cookies.id?<button  className="btnPut" >Modifier le post</button> :null}
-                    {(item && item.userId) == cookies.id?<button className="btnDel" onClick={(e) => {{deletePost(item.id)};stopEvent(e)}}>Supprimer le post</button> :null}
+                    {((item && item.userId) == cookies.id || admin)?<button  className="btnPut" >Modifier le post</button> :null}
+                    {((item && item.userId) == cookies.id || admin)?<button className="btnDel" onClick={(e) => {{deletePost(item.id)};stopEvent(e)}}>Supprimer le post</button> :null}
                 </div>
             </div>      
                     ))} 
