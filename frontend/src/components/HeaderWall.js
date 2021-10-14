@@ -8,7 +8,7 @@ const HeaderWall = () => {
             <img src="./img/logoGroup.png" />
         <div className="ddd">
             <Logout />
-            <DeleteProfil />
+            
         </div>
         </header>
     );

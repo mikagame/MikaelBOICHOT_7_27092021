@@ -9,17 +9,24 @@ const Essailogin = () => {
       const [cookies, setCookie] = useCookies(['token','isLog', 'id'])
       const { register, handleSubmit, formState: { errors } } = useForm();
 
-      const onSubmit = donnees =>  axios.post('http://localhost:3000/api/auth/login', donnees)
-      .then( res => {
-        const TOKEN = res.data.token;
-        const ISLOG = res.data.isLogged;
-        const ID = res.data.id
-        setCookie("token", TOKEN, { path: '/', sameSite: 'strict'})
-        setCookie("isLog", ISLOG, { path: '/', sameSite: 'strict'})
-        setCookie("id", ID, {path: '/', sameSite: 'strict'})
-        history.push('/wall')
-        })
-      .catch(err => (err)) 
+    
+
+      const onSubmit = donnees =>  {
+       
+          axios.post('http://localhost:3000/api/auth/login', donnees)
+          .then( res => {
+            const TOKEN = res.data.token;
+            const ISLOG = res.data.isLogged;
+            const ID = res.data.id
+            setCookie("token", TOKEN, { path: '/', sameSite: 'strict'})
+            setCookie("isLog", ISLOG, { path: '/', sameSite: 'strict'})
+            setCookie("id", ID, {path: '/', sameSite: 'strict'})
+            history.push('/wall')
+            })
+          .catch(err => (err)) 
+ 
+      }
+   
      
   return (
     <form id="formLogin" onSubmit={handleSubmit(onSubmit)}>

@@ -30,11 +30,11 @@ const PostWallUpdate = (props) => {
 
 console.log(props.id)
      return (
-    <div className="postWall">
+    <div className="postWall" id="postWallUpdate">
         <form onSubmit={handleSubmit(onSubmit)} >
             <textarea type="text" placeholder="Modifier votre poste" {...register("post", {required: true, min: 1000})} />
             <input type="file" {...register("imgUrl")}/>
-            <button  type="submit">Modifier</button>
+            <button id="modif" type="submit">Modifier</button>
         </form>
     </div>   
     );

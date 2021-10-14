@@ -10,6 +10,7 @@ import { useHistory } from 'react-router';
 import PostWallUpdate from '../components/PostWallUpdate';
 
 
+
 const Wall = () => {
     
     const[cookies, setCookie] = useCookies(['token', 'isLog', 'id']);
@@ -21,10 +22,7 @@ const Wall = () => {
     const[formUpdate, setFormUpdate] = useState(<PostWall />)
 
     let history = useHistory();
-    let res = []
-    let count = 0;
-   
-
+    
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + cookies.token;  
     
     useEffect(() => {
@@ -56,27 +54,19 @@ const Wall = () => {
 
     const showUpdate = (id) => {
 setFormUpdate(<PostWallUpdate id={id}/>)
-    }
-
-    const updatePost = (id) => {
-        axios.put(`http://localhost:3000/api/wall/${id}`)
-        .then(res => window.location.reload())
 
     }
 
     // Afficher un seul Post
     const showPost = (id) => {history.push(`/wall/${id}`)}
 
-   
     function stopEvent(ev) {ev.stopPropagation()}
-    console.log(cookies)
-   
-
+    
     return (
         <> 
             <HeaderWall />
             <div className="createPost">
-                <div className="welcome">Hello {name}</div>   
+                <div className="welcome"><h1>Hello {name}</h1></div>   
             </div>
             <div id="bodyWall"> 
 
@@ -99,7 +89,7 @@ setFormUpdate(<PostWallUpdate id={id}/>)
                     }}                                     
                 )}
                 <i className="far fa-comment"></i>              
-                Commentaire(s) ({nbrCom}) 
+                Commentaire(s) () 
                 <div className="btnPost">
                     {((item && item.userId) == cookies.id || admin)?<button  className="btnPut" onClick={(e) => {{showUpdate(item.id)};stopEvent(e)}}>Modifier le post</button> :null}  {/*{updatePost(item.id)}*/}
                     {((item && item.userId) == cookies.id || admin)?<button className="btnDel" onClick={(e) => {{deletePost(item.id)};stopEvent(e)}}>Supprimer le post</button> :null}
@@ -109,6 +99,7 @@ setFormUpdate(<PostWallUpdate id={id}/>)
                     ))} 
                       
             </div>
+           
             
             {formUpdate}
         </>

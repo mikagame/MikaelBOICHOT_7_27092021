@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 
 const db = require('../models/');
 
-
+//enregistrer un utilisateur
 exports.signup = (req, res, next) => {
     db.User.findAll()
     .then((res) => {
@@ -47,6 +47,7 @@ exports.signup = (req, res, next) => {
    
 };
 
+//se connecter 
 exports.login = (req, res, next) => {
     db.User.findOne({ where: {email: req.body.email} })
     .then(user => {
@@ -99,4 +100,12 @@ exports.allUsers = (req, res, next) => {
     db.User.findAll()
     .then(info => res.status(201).json(info))
     .catch(err => (res.status(500).json({message: err.message})))
+}
+
+exports.deleteUser = (req, res, next) => {
+    console.log(req.params)
+    db.User.destroy({ where: {id: req.params.id }})
+   .then(() => res.status(200).json({ message: 'User supprimé'}))
+   .catch(err => (res.status(500).json({message: err.message})))
+     
 }

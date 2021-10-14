@@ -56,8 +56,8 @@ console.log(admin)
         <div className="one">
 
         <div className="oneArticle">
-        {info && info.post}
-        {((info && info.userId) == cookies.id || admin)?<button>supprimer mon post</button>:null}
+        <h1>{info && info.post}</h1>
+        
         
             <img src={info&& info.imgUrl}/>
         </div>

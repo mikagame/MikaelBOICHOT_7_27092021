@@ -93,6 +93,8 @@
    margin-bottom: 200px;
 }
 
+
+
 .postWall {
     display: flex;
     justify-content: center;
@@ -113,8 +115,17 @@
 padding: 20px;
     }
     button {
+       
         padding: 20px;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: bold;
+        background-color: rgb(121, 197, 121);
+       
     }
+}
+#modif{
+    background-color: rgb(93, 198, 230);
 }
 
 .postComment {
@@ -264,6 +275,54 @@ label {
 
 #formLogin , #formSignup{
     width: 280px;
+}
+
+.deleteAccount {
+    a {
+        text-decoration: none;
+        color: rgb(192, 4, 4);
+        padding: 5px;
+        margin-left: 15px;
+        background-color: rgb(231, 226, 226) ;
+        border-radius: 5px;
+        transition: 0.2s;
+        &:hover {
+            box-shadow: 2px 2px 2px black;
+        }
+    }
+}
+
+@media screen and (max-width:767px) {
+
+ 
+
+    #headerWall {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .logout a {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width:900px) {
+
+    body {
+        margin-bottom: 300px;
+    }
+
+    .postWall {
+        display: flex;
+        flex-direction: column;
+        height: 300px;
+        justify-content: space-around;
+        
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+    }
 }
   
 

@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useCookies} from "react-cookie";
+import DeleteProfil from './DeleteProfil';
 
 const PostWall = () => {
 
@@ -31,6 +32,7 @@ const PostWall = () => {
             <input type="file" {...register("imgUrl")}/>
             <button  type="submit">Envoyer</button>
         </form>
+        <DeleteProfil />
     </div>   
     );
 
