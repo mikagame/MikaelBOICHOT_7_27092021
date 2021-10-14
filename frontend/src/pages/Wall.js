@@ -54,6 +54,7 @@ const Wall = () => {
     const updatePost = (id) => {
         axios.put(`http://localhost:3000/api/wall/${id}`)
         .then(res => window.location.reload())
+        .catch()
 
     }
 
