@@ -6,9 +6,9 @@ const db = require('../models/');
 //enregistrer un utilisateur
 exports.signup = (req, res, next) => {
     db.User.findAll()
-    .then((res) => {
+    .then((result) => {
         
-        if(res.length == 0) {
+        if(result.length == 0) {
             
             bcrypt.hash(req.body.password, 10)
             .then(hash => {
