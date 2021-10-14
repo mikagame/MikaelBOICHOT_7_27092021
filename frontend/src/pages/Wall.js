@@ -9,8 +9,6 @@ import Comment from '../components/Comment';
 import { useHistory } from 'react-router';
 import PostWallUpdate from '../components/PostWallUpdate';
 
-
-
 const Wall = () => {
     
     const[cookies, setCookie] = useCookies(['token', 'isLog', 'id']);
@@ -32,9 +30,7 @@ const Wall = () => {
         // Récupération des commentaires
         axios.get('http://localhost:3000/api/comment')
         .then(res => {
-            setComs(res.data)
-            
-            
+            setComs(res.data)       
         })
         // Récupération du Username
         axios.get(`http://localhost:3000/api/auth/${cookies.id}`)
@@ -44,7 +40,6 @@ const Wall = () => {
         }) 
 
     }, [])
-
 
     // Supprimer un Post
     const deletePost =(id) => {

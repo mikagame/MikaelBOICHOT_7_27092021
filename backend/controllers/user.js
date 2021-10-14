@@ -8,15 +8,15 @@ exports.signup = (req, res, next) => {
     db.User.findAll()
     .then((result) => {
         
-        if(result.length == 0) {
+        if(result.length == 0) {   
             
-            bcrypt.hash(req.body.password, 10)
+            bcrypt.hash(req.body.password, 10)  // hasher mot de passe
             .then(hash => {
                 const user = ({
                     email: req.body.email,
                     username: req.body.username,
                     password: hash,
-                    isAdmin: true
+                    isAdmin: true  // Administrateur  1er user créé
                 })
                 db.User.create(user)
             .then((res) => res.status(201).json(user))
@@ -82,6 +82,8 @@ exports.login = (req, res, next) => {
     .catch(err => (res.status(500).json({message: err.message})))
 };
 
+
+//voir un user
 exports.oneUser = (req, res, next) => {
    
     db.User.findOne({where: {id: req.params.id}})
@@ -95,6 +97,8 @@ exports.oneUser = (req, res, next) => {
 .catch(err => (res.status(500).json({message: err.message})))
 }
 
+
+//voir tous les users
 exports.allUsers = (req, res, next) => {
 
     db.User.findAll()
@@ -102,6 +106,7 @@ exports.allUsers = (req, res, next) => {
     .catch(err => (res.status(500).json({message: err.message})))
 }
 
+//supprimer un user
 exports.deleteUser = (req, res, next) => {
     console.log(req.params)
     db.User.destroy({ where: {id: req.params.id }})

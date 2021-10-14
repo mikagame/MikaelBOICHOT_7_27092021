@@ -18,7 +18,7 @@ exports.getOne = (req, res, next) => {
 }
 
 
-//Créer un POST
+//Créer un POST avec image
 exports.createPost = (req, res, next) => {
     console.log(req.body)
     
@@ -32,11 +32,24 @@ exports.createPost = (req, res, next) => {
     .then( result => res.status(201).json(result))
     .catch(err => (res.status(500).json({message: err.message})))
     }
-
+//Créer un POST sans image
+exports.createPostSansImage = (req, res, next) => {
+    console.log(req.body)
+    
+    const POST = ({
+        userId: req.body.id,
+        post: req.body.post,
+        username: req.body.username,
+         imgUrl: null
+    }) 
+    db.Wall.create(POST)
+    .then( result => res.status(201).json(result))
+    .catch(err => (res.status(500).json({message: err.message})))
+    }
 
 
 //Supprimer un POST
- exports.deletePost = (req, res, next) => {
+/* exports.deletePost = (req, res, next) => {
         db.Wall.findOne({ where: {id: req.params.id }})    
         .then(post => {
             
@@ -52,7 +65,41 @@ exports.createPost = (req, res, next) => {
             
         })
         .catch(error => res.status(400).json({ error }));   
+    }*/
+
+    exports.deletePost = (req, res, next) => {
+        db.Wall.findOne({ where: {id: req.params.id }})    
+        .then(post => {
+            if(post.imgUrl){
+                const filename = post.imgUrl.split('/images/')[1];  
+                fs.unlink(`images/${filename}`, () => {
+                  db.Wall.destroy({ where: {id: req.params.id }})
+                    .then(() => res.status(200).json({ message: 'Post supprimé'}))
+                    .catch(error => res.status(400).json({ error }));
+                db.Comment.destroy({where: {postId: req.params.id}})
+                .then(() => res.status(200).json({ message: 'Commentaires supprimés'}))
+                    .catch(error => res.status(400).json({ error }));
+                });
+            }else {
+                db.Wall.destroy({ where: {id: req.params.id }})
+                .then(() => res.status(200).json({ message: 'Post supprimé'}))
+                .catch(error => res.status(400).json({ error }));
+            db.Comment.destroy({where: {postId: req.params.id}})
+            .then(() => res.status(200).json({ message: 'Commentaires supprimés'}))
+                .catch(error => res.status(400).json({ error }));
+
+            }
+
+            
+        })
+        .catch(error => res.status(400).json({ error }));   
     }
+
+
+
+
+
+
 
 //Modifier un POST
 exports.updatePost = (req, res, next) => {

@@ -21,12 +21,9 @@ const PostWall = () => {
         setAdmin(res.data.isAdmin)
     }) 
 
-        const onSubmit = (donnees)  =>  {
-
-            if(elt.checked) {
-                console.log("check check")
-            }
   
+      /*  const onSubmit =   (donnees)  =>  {
+
             const formData = new FormData()
             formData.append("post", donnees.post)        // post de l'utilisateur
             formData.append("id", cookies.id)            // userId
@@ -37,11 +34,43 @@ const PostWall = () => {
             axios.post('http://localhost:3000/api/wall', formData )
             .then(() => window.location.reload())
             .catch(err => (err)) 
-         
+        }*/
+
+        const onSubmit  =   (donnees)  =>   {
+
+            if(elt.checked) {
+            const formData = new FormData()
+            formData.append("post", donnees.post)        // post de l'utilisateur
+            formData.append("id", cookies.id)            // userId
+            formData.append("image", donnees.imgUrl[0]) // image
+            formData.append("username", name)  
+            console.log(formData)
+            
+            axios.post('http://localhost:3000/api/wall', formData )
+            .then(() => {
+                window.location.reload()
+               
+            })
+            .catch(err => (err)) 
+        } else {
+           
+            axios.post('http://localhost:3000/api/wall/sans', {...donnees, "id": cookies.id, "username": name} )
+            .then(() => {
+                window.location.reload()
+                
+            })
+            .catch(err => (err) )
         }
+        }
+
+
+
+
+
+
 const image =() =>{
            
-            if(elt.checked == true) {
+            if(elt.checked ) {
                 setEssai(<input  type="file" {...register("imgUrl")}/>)
 
             }else {
