@@ -9,13 +9,17 @@ const PostWall = () => {
     const [cookies, setCookie] = useCookies(['token','isLog', 'id'])
     const [name, setName] = useState();
     const [essai, setEssai] = useState()
+    const[admin, setAdmin] = useState()
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     let elt = document.getElementById("imgChoice")
 
     axios.get(`http://localhost:3000/api/auth/${cookies.id}`)
-    .then(res => {setName(res.data.username)}) 
+    .then(res => {
+        setName(res.data.username)
+        setAdmin(res.data.isAdmin)
+    }) 
 
         const onSubmit = (donnees)  =>  {
 
@@ -35,8 +39,6 @@ const PostWall = () => {
             .catch(err => (err)) 
          
         }
-
-
 const image =() =>{
            
             if(elt.checked == true) {
@@ -55,7 +57,7 @@ const image =() =>{
 
                 <label htmlFor="imgChoice">
                     Ajouter une image ? 
-                    <input id="imgChoice"  type="checkbox" value="hello"  onClick={() =>image()} /> 
+                    <input id="imgChoice"  type="checkbox"  onClick={() =>image()} /> 
                    
                 </label>
                 {essai}
@@ -63,7 +65,9 @@ const image =() =>{
             </div>
             <button  type="submit">Envoyer</button>
         </form>
-        <DeleteProfil />
+
+        
+        {(!admin)?<DeleteProfil />:null}
     </div>   
     );
 
