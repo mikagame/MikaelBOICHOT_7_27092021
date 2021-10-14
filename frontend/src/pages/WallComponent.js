@@ -51,7 +51,7 @@ console.log(admin)
           
             <img src=".././img/logoGroup.png" alt="logo"/>
         <h1>Hello {name}</h1>
-        <a href="/wall">Retour sur votre mur</a>
+        <a href="/wall" id="backHome"><i class="fas fa-arrow-circle-left"></i></a>
         </header>
         <div className="one">
 

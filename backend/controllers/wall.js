@@ -21,6 +21,7 @@ exports.getOne = (req, res, next) => {
 //Créer un POST
 exports.createPost = (req, res, next) => {
     console.log(req.body)
+    
     const POST = ({
         userId: req.body.id,
         post: req.body.post,
@@ -31,6 +32,7 @@ exports.createPost = (req, res, next) => {
     .then( result => res.status(201).json(result))
     .catch(err => (res.status(500).json({message: err.message})))
     }
+
 
 
 //Supprimer un POST

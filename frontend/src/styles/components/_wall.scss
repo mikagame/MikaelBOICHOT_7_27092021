@@ -121,7 +121,6 @@ padding: 20px;
         font-size: 15px;
         font-weight: bold;
         background-color: rgb(121, 197, 121);
-       
     }
 }
 #modif{
@@ -212,9 +211,12 @@ align-items: center;
 #zoneComment {
     width: 50%;
     max-width: 540px;
+   height: 200px;
    padding: 30px;
    background-color: white;
    margin-top: 20px;
+   overflow-y: scroll;
+   
 }
 
 .com {
@@ -228,10 +230,12 @@ align-items: center;
     width: 30%;
     }
     a {
-        border: 1px solid black;
-        border-radius: 10px;
+       font-size: 30px;
+        color:grey;
+        transition: 0.3s;
         &:hover {
-           background-color: rgba(164, 236, 221, 0.5);
+            transform: scale(1.2);
+            color: rgb(80, 79, 79);
         }
     }
 }
@@ -248,7 +252,7 @@ align-items: center;
 }
 
 textarea {
-    width: 90%;
+    width: 60%;
     border-radius: 10px;
     padding: 10px;
     margin: 0 10px 0 0;
@@ -292,6 +296,23 @@ label {
     }
 }
 
+.choice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 15px;
+    background-color: white;
+    padding: 5px;
+    border-radius: 10px;
+   
+   label {
+       width: 150px;
+
+   }
+}
+
+
+
 @media screen and (max-width:767px) {
 
  
@@ -322,6 +343,11 @@ label {
             display: flex;
             flex-direction: column;
         }
+       .choice {
+           display: flex;
+           padding: 5px;
+           margin: 15px 0 15px 0;
+       }
     }
 }
   
