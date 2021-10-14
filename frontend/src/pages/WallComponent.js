@@ -50,14 +50,14 @@ const WallComponent = () => {
           
             <img src=".././img/logoGroup.png" alt="logo"/>
         <h1>Hello {name}</h1>
-        <a href="/wall" id="backHome"><i class="fas fa-arrow-circle-left"></i></a>
+        <a href="/wall" id="backHome"><i class="fas fa-arrow-circle-left"></i>Back</a>
         </header>
         <div className="one">
 
         <div className="oneArticle">
         <h1>{info && info.post}</h1>
          
-            <img src={info&& info.imgUrl}/>
+            <img src={info&& info.imgUrl} alt="imgPost" />
         </div> 
             <div id="zoneComment" className="zoneComment">
             {assoCom && assoCom.map(item => (

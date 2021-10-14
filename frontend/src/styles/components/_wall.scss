@@ -152,15 +152,15 @@ align-items: center;
     margin-bottom: 20px;
     a {
         text-decoration: none;
-        color: white;
+        color: rgb(255, 255, 255);
         font-size: 20px;
         border: 1px solid black;
         border-radius: 15px;
         padding: 10px;
-        background-color: rgb(231, 56, 56);
+        background-color: rgb(155, 4, 4);
         width: 20%;
         &:hover {
-            background-color: rgb(155, 7, 7);
+           box-shadow: 2px 2px 2px  black;
     }
     }
 }
@@ -234,7 +234,7 @@ align-items: center;
         color:grey;
         transition: 0.3s;
         &:hover {
-            transform: scale(1.2);
+            
             color: rgb(80, 79, 79);
         }
     }
@@ -309,6 +309,12 @@ label {
        width: 150px;
 
    }
+}
+
+.lab {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
 }
 
 

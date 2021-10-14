@@ -81,7 +81,7 @@ const image =() =>{
      return (
     <div className="postWall">
         <form onSubmit={handleSubmit(onSubmit)} >
-            <textarea type="text" placeholder="Poster quelquechose" {...register("post", {required: true, min: 1000})} />
+            <label className="lab" htmlFor="textareaWall">Poster ?<textarea id="textareaWall" type="text" placeholder="Poster quelquechose" {...register("post", {required: true, min: 1000})} /></label>
             <div className="choice">
 
                 <label htmlFor="imgChoice">

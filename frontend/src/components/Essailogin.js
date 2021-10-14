@@ -30,12 +30,12 @@ const Essailogin = () => {
      
   return (
     <form id="formLogin" onSubmit={handleSubmit(onSubmit)}>
-      <label htmlFor="email">email: <input name="email" type="email" placeholder="E-mail" {...register("email", {required: true, maxLength: 80})} /></label>
+      <label htmlFor="email">email: <input id="email" type="email" placeholder="E-mail" {...register("email", {required: true, maxLength: 80})} /></label>
      
 
-      <label htmlFor="password">password: <input name="password" type="password" placeholder="Password" {...register("password", {required: true, min: 3})} /></label>
+      <label htmlFor="password">password: <input id="password" type="password" placeholder="Password" {...register("password", {required: true, min: 3})} /></label>
 
-      <input type="submit"  />
+      <input type="submit"  value="Envoyer"/>
     </form>
   );
 }

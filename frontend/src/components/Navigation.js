@@ -8,7 +8,7 @@ const Navigation = () => {
     return (
         <div className="navigation" >
        
-            <img src="./img/logoGroup.png" />
+            <img src="./img/logoGroup.png" alt="logo"/>
             <div>
             <NavLink id="Accueil" exact to="/" activeClassName="nav-active" >
                 Accueil

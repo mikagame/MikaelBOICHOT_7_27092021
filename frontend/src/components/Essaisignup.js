@@ -17,11 +17,11 @@ const Essaisignup= () => {
   return (
     <form id="formSignup" onSubmit={handleSubmit(onSubmit)}>
 
-      <label htmlFor="email">email: <input name="email" type="email" placeholder="E-mail" {...register("email", {required: true, maxLength: 80})} /></label>
-      <label htmlFor="username">username: <input type="text" placeholder="Username" {...register("username", {required: true, min: 3, maxLength: 100})} /></label>
-      <label htmlFor="password">password: <input type="password" placeholder="Password" {...register("password", {required: true, min: 3})} /></label>
+      <label htmlFor="email">email: <input id="email" type="email" placeholder="E-mail" {...register("email", {required: true, maxLength: 80})} /></label>
+      <label htmlFor="username">username: <input id="username" type="text" placeholder="Username" {...register("username", {required: true, min: 3, maxLength: 100})} /></label>
+      <label htmlFor="password">password: <input id="password" type="password" placeholder="Password" {...register("password", {required: true, min: 3})} /></label>
 
-      <input type="submit" />
+      <input type="submit" value="Envoyer" />
     </form>
   );
 }

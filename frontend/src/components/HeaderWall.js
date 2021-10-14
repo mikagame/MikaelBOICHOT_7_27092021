@@ -5,7 +5,7 @@ import Logout from './Logout';
 const HeaderWall = () => {
     return (
         <header id="headerWall">
-            <img src="./img/logoGroup.png" />
+            <img src="./img/logoGroup.png" alt="logoGroup" />
         <div className="ddd">
             <Logout />
             

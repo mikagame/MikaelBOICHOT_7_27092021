@@ -26,8 +26,8 @@ console.log(props.id)
     return (
 
         <form id="sayForm" onSubmit={handleSubmit(onSubmit)}>
-          <textarea id="textComment" type="textarea" placeholder="Dire quelquechose" {...register("comment", {required: true, min: 1000})} />
-          <input type="submit"  />
+          <label className="lab" htmlFor="textComment">Dire quelquechose ?<textarea id="textComment" type="textarea" placeholder="Dire quelquechose" {...register("comment", {required: true, min: 1000})} /></label>
+          <input type="submit"  value="Envoyer" />
         </form>
     );
 };
