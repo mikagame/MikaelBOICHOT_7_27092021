@@ -20,6 +20,7 @@ const Essaisignup= () => {
     })          
     .catch( err => {
       if (err) {
+        console.log(err)
         setForm(err.response.data.message)
         function  x() {setForm(formulaire)} 
        setTimeout( x, 3000 )

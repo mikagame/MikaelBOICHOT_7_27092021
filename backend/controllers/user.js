@@ -18,7 +18,7 @@ exports.signup = (req, res, next) => {
                     isAdmin: true  // Administrateur  1er user créé
                 })
                 db.User.create(user)
-            .then((res) => res.status(201).json("utilisateur créé"))
+            .then((res.status(201).json({message: "utilisateur créé"})))
             .catch(err => (res.status(500).json({message: err.message})))
             })
             .catch(err => (res.status(500).json({message: err.message})))
