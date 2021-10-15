@@ -8,7 +8,7 @@ import { useCookies} from "react-cookie";
 const Essaisignup= () => {
 
   let history = useHistory();
-  const { register, handleSubmit, /*formState: { errors } */} = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
   const onSubmit = donnees =>  {
 

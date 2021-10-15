@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { useHistory } from "react-router-dom";
 import { useCookies} from "react-cookie";
+import { useState } from 'react';
 
 const Essailogin = () => {
 
@@ -9,12 +10,8 @@ const Essailogin = () => {
       const [cookies, setCookie] = useCookies(['token','isLog', 'id'])
       const { register, handleSubmit, formState: { errors } } = useForm();
 
-    
-
       const onSubmit = donnees =>  {
 
-        //if(!donnees.email || !password || !)
-       
           axios.post('http://localhost:3000/api/auth/login', donnees)
           .then( res => {
             const TOKEN = res.data.token;
@@ -25,17 +22,26 @@ const Essailogin = () => {
             setCookie("id", ID, {path: '/', sameSite: 'strict'})
             history.push('/wall')
             })
-          .catch(err => (err)) 
- 
+            .catch(err => {if(err){
+              setForm(err.response.data.error)
+              function  x() {setForm(formulaire)} 
+              setTimeout( x, 3000 )
+            }})
       }
+
+    const formulaire = ( <form id="formLogin" onSubmit={handleSubmit(onSubmit)}>
+    <label htmlFor="email">email: <input id="email" type="email" placeholder="E-mail" {...register("email", {required: true, maxLength: 80})} /></label>
+    <label htmlFor="password">password: <input id="password" type="password" placeholder="Password" {...register("password", {required: true, min: 5})} /></label>
+    <input type="submit"  value="Envoyer"/>
+  </form>)
+
+  const [form, setForm] = useState(formulaire)
    
      
   return (
-    <form id="formLogin" onSubmit={handleSubmit(onSubmit)}>
-      <label htmlFor="email">email: <input id="email" type="email" placeholder="E-mail" {...register("email", {required: true, maxLength: 80})} /></label>
-      <label htmlFor="password">password: <input id="password" type="password" placeholder="Password" {...register("password", {required: true, min: 5})} /></label>
-      <input type="submit"  value="Envoyer"/>
-    </form>
+    <div className="formS">
+      {form}
+    </div>
   );
 }
 
