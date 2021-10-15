@@ -55,9 +55,9 @@ const WallComponent = () => {
         <div className="one">
 
         <div className="oneArticle">
-        <h1>{info && info.post}</h1>
+        <h2>{info && info.post}</h2>
          
-            <img src={info&& info.imgUrl} alt="imgPost" />
+            <img src={info&& info.imgUrl} />
         </div> 
             <div id="zoneComment" className="zoneComment">
             {assoCom && assoCom.map(item => (

@@ -7,7 +7,6 @@ const db = require('../models/');
 exports.signup = (req, res, next) => {
     db.User.findAll()
     .then((result) => {
-        
         if(result.length == 0) {   
             
             bcrypt.hash(req.body.password, 10)  // hasher mot de passe
@@ -19,29 +18,39 @@ exports.signup = (req, res, next) => {
                     isAdmin: true  // Administrateur  1er user créé
                 })
                 db.User.create(user)
-            .then((res) => res.status(201).json(user))
+            .then((res) => res.status(201).json("utilisateur créé"))
             .catch(err => (res.status(500).json({message: err.message})))
             })
             .catch(err => (res.status(500).json({message: err.message})))
 
+         } else {
+             db.User.findOne({where: {email: req.body.email}})
+             .then(
+                 (one) => {
+                    if(one.email == req.body.email){
+                        return res.status(401).json({ message: 'utilisateur déjà  créé'});
+                    }}) 
+            db.User.findOne({where: {username: req.body.username}})
+            .then(
+                (one) => {
+                   if(one.username == req.body.username){
+                       return res.status(401).json({ message: 'username déjà pris'});
+                   }}) 
+              
 
-        }
-        else {
-           
-            bcrypt.hash(req.body.password, 10)
-            .then(hash => {
-                const user = ({
-                    email: req.body.email,
-                    username: req.body.username,
-                    password: hash,
-                    isAdmin: false
-                })
-                db.User.create(user)
-            .then(res.status(201).json(user))
-            .catch(err => (res.status(500).json({message: err.message})))
-            })
-            .catch(err => (res.status(500).json({message: err.message})))
-
+bcrypt.hash(req.body.password, 10)
+.then(hash => {
+    const user = ({
+        email: req.body.email,
+        username: req.body.username,
+        password: hash,
+        isAdmin: false
+        })
+    db.User.create(user)
+    .then(res.status(201).json("utilisateur créé"))
+    .catch(err => (res.status(500).json({message: err.message})))
+    })
+    .catch(err => (res.status(500).json({message: err.message})))
         }
     })
    

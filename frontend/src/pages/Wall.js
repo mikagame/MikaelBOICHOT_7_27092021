@@ -73,7 +73,7 @@ setFormUpdate(<PostWallUpdate id={id}/>)
 
                 <LikeDislike />
                 <div className="thing">
-                    <img src={item.imgUrl} alt="imgPost" />
+                    <img src={item.imgUrl}  />
                 </div> 
                 {item.post}
                 {coms && coms.map(com => {              

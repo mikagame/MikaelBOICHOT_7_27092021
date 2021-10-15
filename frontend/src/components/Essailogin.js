@@ -12,6 +12,8 @@ const Essailogin = () => {
     
 
       const onSubmit = donnees =>  {
+
+        //if(!donnees.email || !password || !)
        
           axios.post('http://localhost:3000/api/auth/login', donnees)
           .then( res => {
@@ -31,10 +33,7 @@ const Essailogin = () => {
   return (
     <form id="formLogin" onSubmit={handleSubmit(onSubmit)}>
       <label htmlFor="email">email: <input id="email" type="email" placeholder="E-mail" {...register("email", {required: true, maxLength: 80})} /></label>
-     
-
-      <label htmlFor="password">password: <input id="password" type="password" placeholder="Password" {...register("password", {required: true, min: 3})} /></label>
-
+      <label htmlFor="password">password: <input id="password" type="password" placeholder="Password" {...register("password", {required: true, min: 5})} /></label>
       <input type="submit"  value="Envoyer"/>
     </form>
   );
